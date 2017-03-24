@@ -1,6 +1,6 @@
-# Swiftlet
+# Swiflet
 
-_Swiftlet_ provides `->>` like `let` in Kotlin.
+_Swiflet_ provides `->>` like `let` in Kotlin.
 
 ```swift
 struct Foo {
