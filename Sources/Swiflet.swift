@@ -1,5 +1,5 @@
-infix operator ->>
+infix operator =>
 
-public func ->><T, U>(lhs: T, rhs: (T) -> U) -> U {
+public func =><T, U>(lhs: T, rhs: (T) -> U) -> U {
     return rhs(lhs)
 }

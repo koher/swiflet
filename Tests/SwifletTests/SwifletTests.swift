@@ -4,7 +4,7 @@ import XCTest
 class SwifletTests: XCTestCase {
     func testExample() {
         let foo = Foo(bar: 2, baz: 3.0, qux: "xyz")
-        let (bar, qux) = foo ->> { ($0.bar, $0.qux) }
+        let (bar, qux) = foo => { ($0.bar, $0.qux) }
         
         XCTAssertEqual(bar, 2)
         XCTAssertEqual(qux, "xyz")
