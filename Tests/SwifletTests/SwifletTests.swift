@@ -3,9 +3,11 @@ import XCTest
 
 class SwifletTests: XCTestCase {
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        XCTAssertEqual(Swiflet().text, "Hello, World!")
+        let foo = Foo(bar: 2, baz: 3.0, qux: "xyz")
+        let (bar, qux) = foo ->> { ($0.bar, $0.qux) }
+        
+        XCTAssertEqual(bar, 2)
+        XCTAssertEqual(qux, "xyz")
     }
 
 
@@ -14,4 +16,10 @@ class SwifletTests: XCTestCase {
             ("testExample", testExample),
         ]
     }
+}
+
+struct Foo {
+    var bar: Int
+    var baz: Float
+    var qux: String
 }
