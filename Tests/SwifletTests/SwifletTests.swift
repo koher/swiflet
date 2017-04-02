@@ -10,7 +10,6 @@ class SwifletTests: XCTestCase {
         XCTAssertEqual(qux, "xyz")
     }
 
-
     static var allTests : [(String, (SwifletTests) -> () throws -> Void)] {
         return [
             ("testExample", testExample),
