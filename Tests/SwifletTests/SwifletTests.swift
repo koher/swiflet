@@ -3,12 +3,10 @@ import XCTest
 
 class SwifletTests: XCTestCase {
     func testExample() {
-        func x() -> Double { return 3 }
-        func y() -> Double { return 4 }
+        func x() -> Int { return 3 }
 
-        // Similar to `sqrt(x() * x() + y() * y())`
-        // but calls `x()` and `y()` just once respectively
-        let l = sqrt((x() => { $0 * $0 }) + (y() => { $0 * $0 }))
+        // Similar to `x() * x()` but calls `x()` just once
+        let square = x() => { $0 * $0 }
         
         do {
             try x() => { try throwable($0) }
@@ -16,7 +14,7 @@ class SwifletTests: XCTestCase {
             XCTFail()
         }
         
-        XCTAssertEqual(l, 5.0, accuracy: 1e-10)
+        XCTAssertEqual(square, 9)
     }
 
     func testChains() {
