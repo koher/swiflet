@@ -11,6 +11,7 @@ class SwifletTests: XCTestCase {
         do {
             try x() => { try throwable($0) }
         } catch {
+            // Error handling
             XCTFail()
         }
         
