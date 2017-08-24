@@ -9,7 +9,7 @@ class SwifletTests: XCTestCase {
         let square = x() => { $0 * $0 }
         
         do {
-            try x() => { try throwable($0) }
+            try x() => { try throwable($0, $0) }
         } catch {
             // Error handling
             XCTFail()
@@ -37,5 +37,5 @@ class SwifletTests: XCTestCase {
     }
 }
 
-func throwable<T>(_ x: T) throws {
+func throwable<T>(_ x: T, _ y: T) throws {
 }

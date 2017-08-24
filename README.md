@@ -11,7 +11,7 @@ It is possible to `throw` errors in a closure passed to `=>` because `=>` is mar
 
 ```swift
 do {
-    try x() => { try throwable($0) }
+    try x() => { try throwable($0, $0) }
 } catch {
     // Error handling
 }
