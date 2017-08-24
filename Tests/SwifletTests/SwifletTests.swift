@@ -3,17 +3,20 @@ import XCTest
 
 class SwifletTests: XCTestCase {
     func testExample() {
-        let foo = Foo(bar: 2, baz: 3.0, qux: "xyz")
-        let (bar, qux) = foo => { ($0.bar, $0.qux) }
+        func x() -> Double { return 3 }
+        func y() -> Double { return 4 }
+
+        // Similar to `sqrt(x() * x() + y() * y())`
+        // but calls `x()` and `y()` just once respectively
+        let l = sqrt((x() => { $0 * $0 }) + (y() => { $0 * $0 }))
         
         do {
-            try foo => { try throwable($0) }
+            try x() => { try throwable($0) }
         } catch {
             XCTFail()
         }
         
-        XCTAssertEqual(bar, 2)
-        XCTAssertEqual(qux, "xyz")
+        XCTAssertEqual(l, 5.0, accuracy: 1e-10)
     }
 
     func testChains() {
@@ -35,11 +38,5 @@ class SwifletTests: XCTestCase {
     }
 }
 
-struct Foo {
-    var bar: Int
-    var baz: Float
-    var qux: String
-}
-
-func throwable(_ foo: Foo) throws {
+func throwable<T>(_ x: T) throws {
 }
