@@ -16,6 +16,14 @@ class SwifletTests: XCTestCase {
         XCTAssertEqual(qux, "xyz")
     }
 
+    func testChains() {
+        func a() -> Int { return 3 }
+
+        let aaaa: Int = a() => { $0 * $0 } => { $0 * $0 }
+
+        XCTAssertEqual(aaaa, 81)
+    }
+
     static var allTests : [(String, (SwifletTests) -> () throws -> Void)] {
         return [
             ("testExample", testExample),
