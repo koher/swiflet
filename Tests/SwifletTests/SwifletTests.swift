@@ -19,9 +19,13 @@ class SwifletTests: XCTestCase {
     func testChains() {
         func a() -> Int { return 3 }
 
-        let aaaa: Int = a() => { $0 * $0 } => { $0 * $0 }
+        var r: Int = a() => { $0 * $0 } => { $0 + $0 }
 
-        XCTAssertEqual(aaaa, 81)
+        XCTAssertEqual(r, 18)
+        
+        r = a() => { $0 + $0 } => { $0 * $0 }
+
+        XCTAssertEqual(r, 36)
     }
 
     static var allTests : [(String, (SwifletTests) -> () throws -> Void)] {

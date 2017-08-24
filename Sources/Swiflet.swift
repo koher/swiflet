@@ -1,6 +1,7 @@
 infix operator => : SwifletPrecedence
 
 precedencegroup SwifletPrecedence {
+    higherThan: AssignmentPrecedence
     associativity: left
 }
 
